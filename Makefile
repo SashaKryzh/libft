@@ -32,7 +32,8 @@ ft_sqrt.c \
 ft_power.c \
 ft_print_bits.c \
 ft_fibonacci.c \
-ft_print_params_delim.c
+ft_print_params_delim.c \
+get_next_line.c
 
 OBJS = $(SRCS:.c=.o)
 
