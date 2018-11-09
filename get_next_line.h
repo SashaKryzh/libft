@@ -18,9 +18,6 @@
 # include <stdlib.h>
 
 # define BUFF_SIZE 32
-# define ERROR -1
-# define OK 1
-# define FINISH 0
 
 typedef struct	s_gnl
 {

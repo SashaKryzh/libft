@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-t_gnl	*ft_new_fd(int fd, t_gnl *next)
+static t_gnl	*ft_new_fd(int fd, t_gnl *next)
 {
 	t_gnl	*tmp;
 
@@ -23,7 +23,7 @@ t_gnl	*ft_new_fd(int fd, t_gnl *next)
 	return (tmp);
 }
 
-char	*ft_update_str(int path, char *st_buff, char *buff, size_t len)
+static char		*ft_update_str(int path, char *st_buff, char *buff, size_t len)
 {
 	char *tmp;
 
@@ -36,15 +36,15 @@ char	*ft_update_str(int path, char *st_buff, char *buff, size_t len)
 	return (st_buff);
 }
 
-int		ft_return_line(int ret, t_gnl *elem, char **line)
+static int		ft_return_line(int ret, t_gnl *elem, char **line)
 {
 	size_t	len;
 
 	len = 0;
 	if (ret < 0)
-		return (ERROR);
+		return (-1);
 	if (ret == 0 && elem->str == NULL)
-		return (FINISH);
+		return (0);
 	while (elem->str[len] != '\n' && elem->str[len] != '\0')
 		len++;
 	if (elem->str[len] == '\n')
@@ -58,11 +58,13 @@ int		ft_return_line(int ret, t_gnl *elem, char **line)
 	{
 		*line = len ? ft_strsub(elem->str, 0, len) : ft_strnew(0);
 		ft_strdel(&elem->str);
+		if (ret == 0)
+			return (0);
 	}
-	return (OK);
+	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
 	static t_gnl	*list;
 	t_gnl			*elem;
@@ -70,7 +72,7 @@ int		get_next_line(const int fd, char **line)
 	int				ret;
 
 	if (fd < 0 || line == NULL)
-		return (ERROR);
+		return (-1);
 	elem = list;
 	while (elem && elem->fd != fd)
 		elem = elem->next;
