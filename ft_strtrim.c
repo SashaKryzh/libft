@@ -26,7 +26,7 @@ char	*ft_strtrim(char const *s)
 		i++;
 	start = i;
 	if (s[start] == '\0')
-		return (ft_strnew(1));
+		return (ft_strnew(0));
 	while (s[i])
 	{
 		if (ft_isprint((int)s[i]) && s[i] != ' ')
@@ -34,7 +34,5 @@ char	*ft_strtrim(char const *s)
 		i++;
 	}
 	res = ft_strsub(s, start, end - start + 1);
-	if (res == NULL)
-		return (NULL);
 	return (res);
 }
