@@ -61,6 +61,7 @@ ft_toupper.c \
 ft_tolower.c \
 ft_putchar.c \
 ft_putstr.c \
+ft_putnstr.c \
 ft_putendl.c \
 ft_putnbr.c \
 ft_putchar_fd.c \
