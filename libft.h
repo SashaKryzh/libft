@@ -88,11 +88,14 @@ int				ft_tolower(int c);
 **	Numbers
 */
 
-char			*ft_itoa(int n);
 int				ft_atoi(const char *str);
+char			*ft_itoa(int n);
+char			*ft_itoa_base(long long nbr, int base);
 int				ft_sqrt(int nb);
 long long		ft_power(int n, int p);
 int				ft_fibonacci(int nb);
+int				ft_nbrlen(int nbr, int base);
+int				ft_abs(int n);
 
 /*
 **	Output
