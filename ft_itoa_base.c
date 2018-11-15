@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_itoa_base(long long nbr, int base)
+char	*ft_itoa_base(intmax_t nbr, int base)
 {
 	int		len;
 	int		sign;
