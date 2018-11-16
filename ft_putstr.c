@@ -18,7 +18,7 @@ size_t	ft_putstr(char const *s)
 
 	i = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (s[i])
 	{
 		ft_putchar(s[i]);
