@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnstr.c                                       :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okryzhan <okryzhan@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 17:29:04 by okryzhan          #+#    #+#             */
-/*   Updated: 2018/11/14 17:29:05 by okryzhan         ###   ########.fr       */
+/*   Created: 2018/11/14 17:26:17 by okryzhan          #+#    #+#             */
+/*   Updated: 2018/11/14 17:26:18 by okryzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnstr(char *s, size_t n)
+int		ft_nbrlen(intmax_t nbr, int base)
 {
-	size_t i;
+	int len;
 
-	i = 0;
-	while (s[i] && i < n)
+	if (nbr == 0)
+		return (1);
+	len = 0;
+	while (nbr != 0)
 	{
-		write(1, &s[i], 1);
-		i++;
+		nbr /= base;
+		len++;
 	}
+	return (len);
 }

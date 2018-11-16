@@ -69,6 +69,7 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
+void			ft_strrev(char *s);
 
 /*
 **	Checks
@@ -88,11 +89,14 @@ int				ft_tolower(int c);
 **	Numbers
 */
 
-char			*ft_itoa(int n);
 int				ft_atoi(const char *str);
+char			*ft_itoa(int n);
+char			*ft_itoa_base(intmax_t nbr, int base);
 int				ft_sqrt(int nb);
 long long		ft_power(int n, int p);
 int				ft_fibonacci(int nb);
+int				ft_nbrlen(intmax_t nbr, int base);
+int				ft_abs(int n);
 
 /*
 **	Output

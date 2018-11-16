@@ -48,10 +48,14 @@ ft_strsub.c \
 ft_strjoin.c \
 ft_strtrim.c \
 ft_strsplit.c \
+ft_strrev.c \
 ft_atoi.c \
 ft_itoa.c \
+ft_itoa_base.c \
 ft_sqrt.c \
 ft_power.c \
+ft_abs.c \
+ft_nbrlen.c \
 ft_isalpha.c \
 ft_isdigit.c \
 ft_isalnum.c \
