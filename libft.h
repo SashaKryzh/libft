@@ -103,7 +103,7 @@ int				ft_abs(int n);
 */
 
 void			ft_putchar(char c);
-void			ft_putstr(char const *s);
+size_t			ft_putstr(char const *s);
 void			ft_putnstr(char *s, size_t n);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
