@@ -104,12 +104,12 @@ int				ft_abs(int n);
 
 void			ft_putchar(char c);
 size_t			ft_putstr(char const *s);
-void			ft_putnstr(char *s, size_t n);
-void			ft_putendl(char const *s);
+size_t			ft_putnstr(char *s, size_t n);
+size_t			ft_putendl(char const *s);
 void			ft_putnbr(int n);
 void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
+size_t			ft_putstr_fd(char const *s, int fd);
+size_t			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 /*
