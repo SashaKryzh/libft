@@ -27,7 +27,7 @@ char	*ft_itoa_base(intmax_t nbr, int base)
 	len--;
 	while (len + 1)
 	{
-		if (nbr % base > 9)
+		if (ft_abs(nbr % base) > 9)
 			s[len] = ft_abs(nbr % base) - 10 + 'A';
 		else
 			s[len] = ft_abs(nbr % base) + '0';
