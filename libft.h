@@ -97,7 +97,7 @@ int				ft_sqrt(int nb);
 long long		ft_power(int n, int p);
 int				ft_fibonacci(int nb);
 int				ft_nbrlen(intmax_t nbr, int base);
-int				ft_abs(int n);
+intmax_t		ft_abs(intmax_t n);
 
 /*
 **	Output

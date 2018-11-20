@@ -12,7 +12,7 @@ int		ft_putnbr_base(intmax_t n, char *base_chars)
 		ft_putchar('-');
 	ret += n < 0 && base == 10 ? 1 : 0;
 	if (n > base - 1|| n < -base + 1)
-		ret += ft_putnbr_base(n < 0 ? -(n / base) : n / base, base_chars);
+		ret += ft_putnbr_base(ft_abs(n / base), base_chars);
 	ft_putchar(base_chars[ft_abs(n % base)]);
 	ret += 1;
 	return (ret);
