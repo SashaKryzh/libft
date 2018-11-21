@@ -58,6 +58,7 @@ ft_itoa_base.c \
 ft_sqrt.c \
 ft_power.c \
 ft_abs.c \
+ft_swap.c \
 ft_nbrlen.c \
 ft_isalpha.c \
 ft_isdigit.c \
