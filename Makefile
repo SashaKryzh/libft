@@ -13,6 +13,9 @@
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
+
+INC_DIR = ./includes
+
 SRCS = ft_memset.c \
 ft_bzero.c \
 ft_memcpy.c \
@@ -89,12 +92,12 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) libft.h
+$(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-%.o: %.c
-	$(CC) $(FLAGS) -o $@ -c $<
+%.o: %.c $(INC_DIR)/*.h
+	$(CC) $(FLAGS) -o $@ -c $< -I $(INC_DIR)
 
 clean:
 	rm -f $(OBJS)

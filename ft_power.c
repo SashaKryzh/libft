@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-long long	ft_power(int n, int p)
+intmax_t	ft_power(int n, int p)
 {
-	long long res;
+	intmax_t res;
 
 	res = 1;
 	while (p > 0)

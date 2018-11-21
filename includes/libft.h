@@ -94,7 +94,7 @@ int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(intmax_t nbr, int base);
 int				ft_sqrt(int nb);
-long long		ft_power(int n, int p);
+intmax_t		ft_power(int n, int p);
 int				ft_fibonacci(int nb);
 int				ft_nbrlen(intmax_t nbr, int base);
 intmax_t		ft_abs(intmax_t n);
