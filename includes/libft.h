@@ -98,6 +98,7 @@ intmax_t		ft_power(int n, int p);
 int				ft_fibonacci(int nb);
 int				ft_nbrlen(intmax_t nbr, int base);
 intmax_t		ft_abs(intmax_t n);
+void			ft_swap(int *a, int *b);
 
 /*
 **	Output
