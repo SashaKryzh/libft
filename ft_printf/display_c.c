@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   display_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okryzhan <okryzhan@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/27 16:49:05 by okryzhan          #+#    #+#             */
-/*   Updated: 2018/10/27 16:49:06 by okryzhan         ###   ########.fr       */
+/*   Created: 2018/11/13 08:43:27 by okryzhan          #+#    #+#             */
+/*   Updated: 2018/11/13 08:43:27 by okryzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-intmax_t	ft_power(int n, int p)
+int				display_c(t_arg *arg, va_list ap, int percent)
 {
-	intmax_t res;
+	int				i;
+	unsigned char	c;
 
-	res = 1;
-	while (p > 0)
-	{
-		res *= n;
-		p--;
-	}
-	return (res);
+	i = 0;
+	c = percent ? '%' : (unsigned char)va_arg(ap, int);
+	if (arg->width && !arg->left_adj)
+		padding(arg, arg->zero_pad ? '0' : ' ', 1);
+	write(1, &c, 1);
+	if (arg->width && arg->left_adj)
+		padding(arg, ' ', 1);
+	return (arg->width > 0 ? arg->width : 1);
 }

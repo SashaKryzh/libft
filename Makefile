@@ -13,6 +13,9 @@
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
+
+INC_DIR = ./includes
+
 SRCS = ft_memset.c \
 ft_bzero.c \
 ft_memcpy.c \
@@ -55,6 +58,7 @@ ft_itoa_base.c \
 ft_sqrt.c \
 ft_power.c \
 ft_abs.c \
+ft_swap.c \
 ft_nbrlen.c \
 ft_isalpha.c \
 ft_isdigit.c \
@@ -89,12 +93,12 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) libft.h
-	ar rc $(NAME) $(OBJS) ./ft_printf/libftprintf.a
+$(NAME): $(OBJS)
+	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-%.o: %.c
-	$(CC) $(FLAGS) -o $@ -c $<
+%.o: %.c $(INC_DIR)/*.h
+	$(CC) $(FLAGS) -o $@ -c $< -I $(INC_DIR)
 
 clean:
 	rm -f $(OBJS)

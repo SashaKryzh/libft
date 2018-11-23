@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okryzhan <okryzhan@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/27 16:49:05 by okryzhan          #+#    #+#             */
-/*   Updated: 2018/10/27 16:49:06 by okryzhan         ###   ########.fr       */
+/*   Created: 2018/11/21 18:22:35 by okryzhan          #+#    #+#             */
+/*   Updated: 2018/11/21 18:22:36 by okryzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_power(int n, int p)
+void	ft_swap(int *a, int *b)
 {
-	intmax_t res;
+	int tmp;
 
-	res = 1;
-	while (p > 0)
-	{
-		res *= n;
-		p--;
-	}
-	return (res);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
