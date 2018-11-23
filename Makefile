@@ -13,9 +13,8 @@
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
-
 INC_DIR = ./includes
-
+PRINTF = ./ft_printf/
 SRCS = ft_memset.c \
 ft_bzero.c \
 ft_memcpy.c \
@@ -87,14 +86,28 @@ ft_lstmap.c \
 ft_isspace.c \
 ft_fibonacci.c \
 ft_print_params_delim.c \
-get_next_line.c
+get_next_line.c \
+$(PRINTF)ft_printf.c \
+$(PRINTF)parser.c \
+$(PRINTF)display_d.c \
+$(PRINTF)display_c.c \
+$(PRINTF)display_s.c \
+$(PRINTF)display_o.c \
+$(PRINTF)display_u.c \
+$(PRINTF)display_x.c \
+$(PRINTF)display_p.c \
+$(PRINTF)display_f.c \
+$(PRINTF)display_b.c \
+$(PRINTF)get_value.c \
+$(PRINTF)dtoa.c \
+$(PRINTF)utils.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME) $(OBJS) ./ft_printf/libftprintf.a
 	ranlib $(NAME)
 
 %.o: %.c $(INC_DIR)/*.h

@@ -56,8 +56,8 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-%.o: %.c ft_printf.h
-	$(CC) $(FLAGS) -o $@ -c $< -I..
+%.o: %.c
+	$(CC) $(FLAGS) -o $@ -c $< -I../includes
 
 clean:
 	rm -f $(OBJS)
