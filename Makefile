@@ -90,7 +90,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) libft.h
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME) $(OBJS) ./ft_printf/libftprintf.a
 	ranlib $(NAME)
 
 %.o: %.c
