@@ -16,8 +16,6 @@
 # include "libft.h"
 # include <stdarg.h>
 
-# define MALCH(x) if (!x) exit (1);
-
 typedef struct	s_arg
 {
 	int		alter;
@@ -67,6 +65,10 @@ int				display_x(t_arg *arg, va_list ap, char spec);
 int				display_p(t_arg *arg, va_list ap);
 int				display_f(t_arg *arg, va_list ap);
 int				display_b(t_arg *arg, va_list ap);
+
+/*
+** Get value
+*/
 
 uintmax_t		get_unsinged(t_arg *arg, va_list ap);
 intmax_t		get_signed(t_arg *arg, va_list ap);
