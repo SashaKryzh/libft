@@ -58,7 +58,7 @@ static int		ft_return_line(int ret, t_gnl *elem, char **line)
 	{
 		*line = len ? ft_strsub(elem->str, 0, len) : ft_strnew(0);
 		ft_strdel(&elem->str);
-		if (ret == 0)
+		if (**line && ret == 0)
 			return (0);
 	}
 	return (1);

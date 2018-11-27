@@ -26,6 +26,7 @@ ft_memalloc.c \
 ft_memdel.c \
 ft_strlen.c \
 ft_strdup.c \
+ft_strndup.c \
 ft_strcpy.c \
 ft_strncpy.c \
 ft_strcat.c \
