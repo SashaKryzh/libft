@@ -11,10 +11,13 @@
 #******************************************************************************#
 
 NAME = libft.a
+
 FLAGS = -Wall -Wextra -Werror
-CC = gcc
+CC = gcc $(FLAGS)
+
 INC_DIR = ./includes
 PRF_DIR = ./ft_printf
+
 SRCS = ft_memset.c \
 ft_bzero.c \
 ft_memcpy.c \
@@ -112,7 +115,7 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c $(INC_DIR)/*.h
-	$(CC) $(FLAGS) -o $@ -c $< -I $(INC_DIR)
+	$(CC) -o $@ -c $< -I $(INC_DIR)
 
 clean:
 	rm -f $(OBJS)
