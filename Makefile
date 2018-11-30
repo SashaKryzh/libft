@@ -15,7 +15,6 @@ NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = gcc $(FLAGS)
 
-INC_DIR = ./includes
 PRF_DIR = ./ft_printf
 
 SRCS = ft_memset.c \
@@ -106,7 +105,10 @@ $(PRF_DIR)/get_value.c \
 $(PRF_DIR)/dtoa.c \
 $(PRF_DIR)/utils.c
 
-OBJS = $(SRCS:.c=.o)
+INC_DIR = ./includes
+OBJ_DIR = ./objs
+
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 all: $(NAME)
 
@@ -114,7 +116,7 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-%.o: %.c $(INC_DIR)/*.h
+$(OBJ_DIR)/%.o: %.c $(INC_DIR)/*.h
 	$(CC) -o $@ -c $< -I $(INC_DIR)
 
 clean:
