@@ -15,7 +15,7 @@ NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = gcc $(FLAGS)
 
-PRF_DIR = ./ft_printf
+VPATH = ./ft_printf
 
 SRCS = ft_memset.c \
 ft_bzero.c \
@@ -90,27 +90,30 @@ ft_isspace.c \
 ft_fibonacci.c \
 ft_print_params_delim.c \
 get_next_line.c \
-$(PRF_DIR)/ft_printf.c \
-$(PRF_DIR)/parser.c \
-$(PRF_DIR)/display_d.c \
-$(PRF_DIR)/display_c.c \
-$(PRF_DIR)/display_s.c \
-$(PRF_DIR)/display_o.c \
-$(PRF_DIR)/display_u.c \
-$(PRF_DIR)/display_x.c \
-$(PRF_DIR)/display_p.c \
-$(PRF_DIR)/display_f.c \
-$(PRF_DIR)/display_b.c \
-$(PRF_DIR)/get_value.c \
-$(PRF_DIR)/dtoa.c \
-$(PRF_DIR)/utils.c
+ft_printf.c \
+parser.c \
+display_d.c \
+display_c.c \
+display_s.c \
+display_o.c \
+display_u.c \
+display_x.c \
+display_p.c \
+display_f.c \
+display_b.c \
+get_value.c \
+dtoa.c \
+utils.c
 
 INC_DIR = ./includes
 OBJ_DIR = ./objs
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR):
+	mkdir objs
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
@@ -120,7 +123,7 @@ $(OBJ_DIR)/%.o: %.c $(INC_DIR)/*.h
 	$(CC) -o $@ -c $< -I $(INC_DIR)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
