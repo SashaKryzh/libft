@@ -113,20 +113,20 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 all: $(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR):
-	mkdir objs
+	@mkdir objs
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: %.c $(INC_DIR)/*.h
 	$(CC) -o $@ -c $< -I $(INC_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
