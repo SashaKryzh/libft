@@ -94,6 +94,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 
 int				ft_match(char *s1, char *s2);
+int				ft_contains(char *s, char ch);
 
 /*
 **	Numbers
