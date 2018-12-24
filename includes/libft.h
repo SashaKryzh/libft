@@ -14,10 +14,11 @@
 # define LIBFT_H
 
 # include <limits.h>
-
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdio.h>
+# include <errno.h>
 
 # include "get_next_line.h"
 # include "ft_printf.h"
