@@ -14,13 +14,10 @@
 
 size_t	ft_putnstr(char *s, size_t n)
 {
-	size_t i;
+	size_t len;
 
-	i = 0;
-	while (s[i] && i < n)
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	return (i);
+	if (!(len = ft_strlen(s)))
+		return (0);
+	write(1, s, n < len ? n : len);
+	return (n < len ? n : len);
 }
