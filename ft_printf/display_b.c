@@ -12,22 +12,22 @@
 
 #include "ft_printf.h"
 
-int			display_b(t_arg *arg, va_list ap)
+int			pf_display_b(t_pf_arg *arg, va_list ap)
 {
 	unsigned char	octet;
 	int				ret;
 
 	ret = 8;
-	arg->length = hh;
-	octet = get_unsinged(arg, ap);
+	arg->pf_length = hh;
+	octet = pf_get_unsigned(arg, ap);
 	arg->pref = '\0';
 	ret += arg->alter ? 1 : 0;
 	if (arg->width > ret && !arg->left_adj)
-		ret += padding(arg, ' ', ret);
+		ret += pf_padding(arg, ' ', ret);
 	arg->pref = arg->alter ? 'b' : '\0';
 	ft_putchar(arg->pref);
 	ft_print_bits(octet);
 	if (arg->width > ret && arg->left_adj)
-		ret += padding(arg, ' ', 8);
+		ret += pf_padding(arg, ' ', 8);
 	return (ret);
 }

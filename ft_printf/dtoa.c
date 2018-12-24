@@ -33,7 +33,7 @@ static char	*itostr(uintmax_t n, int after)
 	return (s);
 }
 
-char		*ft_dtoa(long double n, int after)
+char		*pf_dtoa(long double n, int after)
 {
 	char		*is;
 	char		*fs;

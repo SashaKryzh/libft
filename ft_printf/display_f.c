@@ -12,19 +12,19 @@
 
 #include "ft_printf.h"
 
-long double	get_f(t_arg *arg, va_list ap)
+long double	get_f(t_pf_arg *arg, va_list ap)
 {
 	long double n;
 
 	n = 0;
-	if (arg->length == no_lenght || arg->length == l)
+	if (arg->pf_length == no_lenght || arg->pf_length == l)
 		n = va_arg(ap, double);
-	else if (arg->length == L)
+	else if (arg->pf_length == L)
 		n = va_arg(ap, long double);
 	return (n);
 }
 
-char		*f_sign(t_arg *arg, char *s)
+char		*f_sign(t_pf_arg *arg, char *s)
 {
 	char *tmp;
 
@@ -35,11 +35,11 @@ char		*f_sign(t_arg *arg, char *s)
 		s = tmp;
 	}
 	if ((arg->blank || arg->pref) && (!arg->zero_pad))
-		s = d_pref(arg, s, 0);
+		s = pf_d_pref(arg, s, 0);
 	return (s);
 }
 
-int			display_f(t_arg *arg, va_list ap)
+int			pf_display_f(t_pf_arg *arg, va_list ap)
 {
 	long double	n;
 	char		*s;
@@ -47,16 +47,16 @@ int			display_f(t_arg *arg, va_list ap)
 
 	n = get_f(arg, ap);
 	arg->precision = arg->precision == -1 ? 6 : arg->precision;
-	MALCH((s = ft_dtoa(n, arg->precision)));
+	MALCH((s = pf_dtoa(n, arg->precision)));
 	arg->pref = arg->sign ? '+' : arg->pref;
 	arg->pref = n < 0 ? '-' : arg->pref;
 	s = f_sign(arg, s);
 	ret = ft_strlen(s);
 	if (arg->width > ret && !arg->left_adj)
-		ret += padding(arg, arg->pad, ret);
+		ret += pf_padding(arg, arg->pad, ret);
 	ft_putstr(s);
 	if (arg->width > ret && arg->left_adj)
-		ret += padding(arg, ' ', ret);
+		ret += pf_padding(arg, ' ', ret);
 	free(s);
 	return (ret);
 }

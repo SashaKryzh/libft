@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	initialize(t_arg *arg)
+static void	initialize(t_pf_arg *arg)
 {
 	arg->alter = 0;
 	arg->zero_pad = 0;
@@ -22,49 +22,49 @@ static void	initialize(t_arg *arg)
 	arg->pref = '\0';
 	arg->width = 0;
 	arg->precision = -1;
-	arg->length = no_lenght;
+	arg->pf_length = no_lenght;
 }
 
-static int	print_arg(t_arg *arg, char spec, va_list ap)
+static int	print_pf_arg(t_pf_arg *arg, char spec, va_list ap)
 {
 	if (spec == 'c' || spec == '%')
-		return (display_c(arg, ap, spec == '%' ? 1 : 0));
+		return (pf_display_c(arg, ap, spec == '%' ? 1 : 0));
 	if (spec == 's')
-		return (display_s(arg, ap));
+		return (pf_display_s(arg, ap));
 	if (spec == 'd' || spec == 'i')
-		return (display_d(arg, ap));
+		return (pf_display_d(arg, ap));
 	if (spec == 'u')
-		return (display_u(arg, ap));
+		return (pf_display_u(arg, ap));
 	if (spec == 'o')
-		return (display_o(arg, ap));
+		return (pf_display_o(arg, ap));
 	if (spec == 'x' || spec == 'X')
-		return (display_x(arg, ap, spec));
+		return (pf_display_x(arg, ap, spec));
 	if (spec == 'p')
-		return (display_p(arg, ap));
+		return (pf_display_p(arg, ap));
 	if (spec == 'f')
-		return (display_f(arg, ap));
+		return (pf_display_f(arg, ap));
 	if (spec == 'b')
-		return (display_b(arg, ap));
+		return (pf_display_b(arg, ap));
 	return (-1);
 }
 
 static int	assemble_arg(char **format, va_list ap)
 {
-	int		ret;
-	t_arg	arg;
+	int			ret;
+	t_pf_arg	arg;
 
 	initialize(&arg);
-	get_flags(&arg, format);
-	get_width(&arg, format, ap);
-	get_precision(&arg, format, ap);
-	get_length(&arg, format);
+	pf_get_flags(&arg, format);
+	pf_get_width(&arg, format, ap);
+	pf_get_precision(&arg, format, ap);
+	pf_get_lenght(&arg, format);
 	arg.zero_pad = arg.precision >= 0 && **format != 'f'
 	&& **format != 'c' && **format != 's' && **format != '%'
 	? 0 : arg.zero_pad;
 	arg.zero_pad = arg.left_adj ? 0 : arg.zero_pad;
 	arg.pad = arg.zero_pad ? '0' : ' ';
 	arg.blank = arg.sign ? 0 : arg.blank;
-	if ((ret = print_arg(&arg, **format, ap)) == -1)
+	if ((ret = print_pf_arg(&arg, **format, ap)) == -1)
 		return (0);
 	*format += 1;
 	return (ret);

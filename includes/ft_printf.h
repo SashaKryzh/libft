@@ -16,7 +16,7 @@
 # include "libft.h"
 # include <stdarg.h>
 
-typedef struct	s_arg
+typedef struct	s_pf_arg
 {
 	int		alter;
 	int		zero_pad;
@@ -28,7 +28,7 @@ typedef struct	s_arg
 	int		width;
 	int		precision;
 	int		nlen;
-	enum	e_length
+	enum	e_pf_length
 	{
 		no_lenght,
 		hh,
@@ -38,8 +38,8 @@ typedef struct	s_arg
 		j,
 		z,
 		L
-	}		length;
-}				t_arg;
+	}		pf_length;
+}				t_pf_arg;
 
 int				ft_printf(const char *format, ...);
 
@@ -47,39 +47,39 @@ int				ft_printf(const char *format, ...);
 ** Parser
 */
 
-void			get_flags(t_arg *arg, char **format);
-void			get_width(t_arg *arg, char **format, va_list ap);
-void			get_precision(t_arg *arg, char **format, va_list ap);
-void			get_length(t_arg *arg, char **format);
+void			pf_get_flags(t_pf_arg *arg, char **format);
+void			pf_get_width(t_pf_arg *arg, char **format, va_list ap);
+void			pf_get_precision(t_pf_arg *arg, char **format, va_list ap);
+void			pf_get_lenght(t_pf_arg *arg, char **format);
 
 /*
 ** Display
 */
 
-int				display_d(t_arg *arg, va_list ap);
-int				display_c(t_arg *arg, va_list ap, int percent);
-int				display_s(t_arg *arg, va_list ap);
-int				display_o(t_arg *arg, va_list ap);
-int				display_u(t_arg *arg, va_list ap);
-int				display_x(t_arg *arg, va_list ap, char spec);
-int				display_p(t_arg *arg, va_list ap);
-int				display_f(t_arg *arg, va_list ap);
-int				display_b(t_arg *arg, va_list ap);
+int				pf_display_d(t_pf_arg *arg, va_list ap);
+int				pf_display_c(t_pf_arg *arg, va_list ap, int percent);
+int				pf_display_s(t_pf_arg *arg, va_list ap);
+int				pf_display_o(t_pf_arg *arg, va_list ap);
+int				pf_display_u(t_pf_arg *arg, va_list ap);
+int				pf_display_x(t_pf_arg *arg, va_list ap, char spec);
+int				pf_display_p(t_pf_arg *arg, va_list ap);
+int				pf_display_f(t_pf_arg *arg, va_list ap);
+int				pf_display_b(t_pf_arg *arg, va_list ap);
 
 /*
 ** Get value
 */
 
-uintmax_t		get_unsinged(t_arg *arg, va_list ap);
-intmax_t		get_signed(t_arg *arg, va_list ap);
+uintmax_t		pf_get_unsigned(t_pf_arg *arg, va_list ap);
+intmax_t		pf_get_signed(t_pf_arg *arg, va_list ap);
 
-int				padding(t_arg *arg, char pad, int ret);
-char			*d_pref(t_arg *arg, char *s, int start);
-void			to_lowercase(char *s);
+int				pf_padding(t_pf_arg *arg, char pad, int ret);
+char			*pf_d_pref(t_pf_arg *arg, char *s, int start);
+void			pf_to_lowercase(char *s);
 
-char			*u_itoa_base(uintmax_t nbr, int base);
-char			*ft_dtoa(long double n, int after);
+char			*pf_u_itoa_base(uintmax_t nbr, int base);
+char			*pf_dtoa(long double n, int after);
 
-char			*unsigned_precision(char *s, int prec);
+char			*pf_unsigned_precision(char *s, int prec);
 
 #endif

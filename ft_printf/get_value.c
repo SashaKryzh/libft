@@ -12,46 +12,46 @@
 
 #include "ft_printf.h"
 
-uintmax_t	get_unsinged(t_arg *arg, va_list ap)
+uintmax_t	pf_get_unsigned(t_pf_arg *arg, va_list ap)
 {
 	uintmax_t n;
 
 	n = va_arg(ap, uintmax_t);
-	if (arg->length == hh)
+	if (arg->pf_length == hh)
 		n = (unsigned char)n;
-	if (arg->length == h)
+	if (arg->pf_length == h)
 		n = (unsigned short)n;
-	if (arg->length == ll)
+	if (arg->pf_length == ll)
 		n = (unsigned long long)n;
-	if (arg->length == l)
+	if (arg->pf_length == l)
 		n = (unsigned long)n;
-	if (arg->length == j)
+	if (arg->pf_length == j)
 		n = (uintmax_t)n;
-	if (arg->length == z)
+	if (arg->pf_length == z)
 		n = (size_t)n;
-	if (arg->length == no_lenght)
+	if (arg->pf_length == no_lenght)
 		n = (unsigned int)n;
 	return (n);
 }
 
-intmax_t	get_signed(t_arg *arg, va_list ap)
+intmax_t	pf_get_signed(t_pf_arg *arg, va_list ap)
 {
 	intmax_t n;
 
 	n = va_arg(ap, intmax_t);
-	if (arg->length == hh)
+	if (arg->pf_length == hh)
 		n = (char)n;
-	if (arg->length == h)
+	if (arg->pf_length == h)
 		n = (short)n;
-	if (arg->length == ll)
+	if (arg->pf_length == ll)
 		n = (long long)n;
-	if (arg->length == l)
+	if (arg->pf_length == l)
 		n = (long)n;
-	if (arg->length == j)
+	if (arg->pf_length == j)
 		n = (intmax_t)n;
-	if (arg->length == z)
+	if (arg->pf_length == z)
 		n = (ssize_t)n;
-	if (arg->length == no_lenght)
+	if (arg->pf_length == no_lenght)
 		n = (int)n;
 	return (n);
 }

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char		*d_pref(t_arg *arg, char *s, int start)
+char		*pf_d_pref(t_pf_arg *arg, char *s, int start)
 {
 	char	*tmp;
 
@@ -26,7 +26,7 @@ char		*d_pref(t_arg *arg, char *s, int start)
 	return (tmp);
 }
 
-char		*d_precision(t_arg *arg, char *s)
+char		*d_precision(t_pf_arg *arg, char *s)
 {
 	char	*tmp;
 	int		i;
@@ -40,7 +40,7 @@ char		*d_precision(t_arg *arg, char *s)
 			s = tmp;
 		}
 		if ((arg->blank || arg->pref) && (!arg->zero_pad || !arg->width))
-			s = d_pref(arg, s, ft_strlen(s) - arg->nlen);
+			s = pf_d_pref(arg, s, ft_strlen(s) - arg->nlen);
 		return (s);
 	}
 	i = 0;
@@ -50,17 +50,17 @@ char		*d_precision(t_arg *arg, char *s)
 	ft_strcpy(&tmp[i], &s[ft_strlen(s) - arg->nlen]);
 	free(s);
 	if (arg->blank || arg->pref == '+' || arg->pref == '-')
-		tmp = d_pref(arg, tmp, 0);
+		tmp = pf_d_pref(arg, tmp, 0);
 	return (tmp);
 }
 
-int			display_d(t_arg *arg, va_list ap)
+int			pf_display_d(t_pf_arg *arg, va_list ap)
 {
 	intmax_t	n;
 	char		*s;
 	int			ret;
 
-	n = get_signed(arg, ap);
+	n = pf_get_signed(arg, ap);
 	MALCH((s = ft_itoa_base(n, 10)));
 	arg->nlen = ft_nbrlen(n, 10);
 	*s = arg->precision == 0 && n == 0 ? '\0' : *s;
@@ -69,10 +69,10 @@ int			display_d(t_arg *arg, va_list ap)
 	s = d_precision(arg, s);
 	ret = ft_strlen(s);
 	if (!arg->left_adj)
-		ret += padding(arg, arg->pad, ret);
+		ret += pf_padding(arg, arg->pad, ret);
 	ft_putstr(s);
 	if (arg->width > ret && arg->left_adj)
-		ret += padding(arg, ' ', ret);
+		ret += pf_padding(arg, ' ', ret);
 	free(s);
 	return (ret);
 }

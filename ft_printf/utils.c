@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char		*unsigned_precision(char *s, int prec)
+char		*pf_unsigned_precision(char *s, int prec)
 {
 	char	*tmp;
 	int		len;
@@ -33,7 +33,7 @@ char		*unsigned_precision(char *s, int prec)
 	return (tmp);
 }
 
-int			padding(t_arg *arg, char pad, int ret)
+int			pf_padding(t_pf_arg *arg, char pad, int ret)
 {
 	int i;
 
@@ -51,7 +51,7 @@ int			padding(t_arg *arg, char pad, int ret)
 	return (i);
 }
 
-void		to_lowercase(char *s)
+void		pf_to_lowercase(char *s)
 {
 	int i;
 

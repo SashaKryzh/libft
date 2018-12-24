@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		display_s(t_arg *arg, va_list ap)
+int		pf_display_s(t_pf_arg *arg, va_list ap)
 {
 	int		ret;
 	int		to_print;
@@ -26,9 +26,9 @@ int		display_s(t_arg *arg, va_list ap)
 	ret = arg->precision < ret && arg->precision != -1 ? arg->precision : ret;
 	to_print = ret;
 	if (arg->width > ret && !arg->left_adj)
-		ret += padding(arg, arg->pad, ret);
+		ret += pf_padding(arg, arg->pad, ret);
 	ft_putnstr(s, to_print);
 	if (arg->width > ret && arg->left_adj)
-		ret += padding(arg, ' ', to_print);
+		ret += pf_padding(arg, ' ', to_print);
 	return (ret);
 }

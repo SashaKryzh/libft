@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	get_flags(t_arg *arg, char **format)
+void	pf_get_flags(t_pf_arg *arg, char **format)
 {
 	while (**format == '#' || **format == '0' || **format == '-'
 	|| **format == '+' || **format == ' ')
@@ -34,7 +34,7 @@ void	get_flags(t_arg *arg, char **format)
 	}
 }
 
-void	get_width(t_arg *arg, char **format, va_list ap)
+void	pf_get_width(t_pf_arg *arg, char **format, va_list ap)
 {
 	if (**format == '0')
 		return ;
@@ -51,7 +51,7 @@ void	get_width(t_arg *arg, char **format, va_list ap)
 	}
 }
 
-void	get_precision(t_arg *arg, char **format, va_list ap)
+void	pf_get_precision(t_pf_arg *arg, char **format, va_list ap)
 {
 	if (**format != '.')
 		return ;
@@ -70,31 +70,31 @@ void	get_precision(t_arg *arg, char **format, va_list ap)
 	}
 }
 
-void	get_length(t_arg *arg, char **format)
+void	pf_get_lenght(t_pf_arg *arg, char **format)
 {
 	if (**format == 'h' && format[0][1] == 'h')
 	{
-		arg->length = hh;
+		arg->pf_length = hh;
 		*format += 2;
 	}
 	else if (**format == 'l' && format[0][1] == 'l')
 	{
-		arg->length = ll;
+		arg->pf_length = ll;
 		*format += 2;
 	}
 	else if (**format == 'h' || **format == 'l' || **format == 'L'
 	|| **format == 'j' || **format == 'z')
 	{
 		if (**format == 'h')
-			arg->length = h;
+			arg->pf_length = h;
 		if (**format == 'l')
-			arg->length = l;
+			arg->pf_length = l;
 		if (**format == 'j')
-			arg->length = j;
+			arg->pf_length = j;
 		if (**format == 'z')
-			arg->length = z;
+			arg->pf_length = z;
 		if (**format == 'L')
-			arg->length = L;
+			arg->pf_length = L;
 		*format += 1;
 	}
 }

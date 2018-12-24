@@ -27,7 +27,7 @@ int		u_nbrlen(uintmax_t nbr, int base)
 	return (len);
 }
 
-char	*u_itoa_base(uintmax_t nbr, int base)
+char	*pf_u_itoa_base(uintmax_t nbr, int base)
 {
 	int		len;
 	int		sign;
@@ -50,23 +50,23 @@ char	*u_itoa_base(uintmax_t nbr, int base)
 	return (s);
 }
 
-int		display_u(t_arg *arg, va_list ap)
+int		pf_display_u(t_pf_arg *arg, va_list ap)
 {
 	uintmax_t	n;
 	char		*s;
 	int			ret;
 
-	n = get_unsinged(arg, ap);
-	MALCH((s = u_itoa_base(n, 10)));
+	n = pf_get_unsigned(arg, ap);
+	MALCH((s = pf_u_itoa_base(n, 10)));
 	arg->pref = '\0';
 	*s = arg->precision == 0 && n == 0 ? '\0' : *s;
-	s = unsigned_precision(s, arg->precision);
+	s = pf_unsigned_precision(s, arg->precision);
 	ret = ft_strlen(s);
 	if (arg->width > arg->precision && !arg->left_adj)
-		ret += padding(arg, arg->pad, ret);
+		ret += pf_padding(arg, arg->pad, ret);
 	ft_putstr(s);
 	if (arg->width > ret && arg->left_adj)
-		ret += padding(arg, ' ', ft_strlen(s));
+		ret += pf_padding(arg, ' ', ft_strlen(s));
 	free(s);
 	return (ret);
 }
