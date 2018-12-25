@@ -24,6 +24,7 @@
 # include "ft_printf.h"
 
 # define MALCH(x) if (!x) exit (1);
+# define ABS(x) ((x) < 0 ? -(x) : (x))
 
 typedef	struct	s_list
 {
@@ -120,7 +121,7 @@ size_t			ft_putstr(char const *s);
 size_t			ft_putnstr(char *s, size_t n);
 size_t			ft_putendl(char const *s);
 void			ft_putnbr(int n);
-int				ft_putnbr_base(intmax_t n, char *base_chars);
+int				ft_putnbr_base(intmax_t n, int base);
 void			ft_putchar_fd(char c, int fd);
 size_t			ft_putstr_fd(char const *s, int fd);
 size_t			ft_putendl_fd(char const *s, int fd);
