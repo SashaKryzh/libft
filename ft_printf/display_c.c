@@ -14,15 +14,17 @@
 
 int				pf_display_c(t_pf_arg *arg, va_list ap, int percent)
 {
-	int				i;
+	char			s[arg->width > 0 ? arg->width : 1];
 	unsigned char	c;
+	int				i;
 
-	i = 0;
 	c = percent ? '%' : (unsigned char)va_arg(ap, int);
-	if (arg->width && !arg->left_adj)
-		pf_padding(arg, arg->zero_pad ? '0' : ' ', 1);
-	write(1, &c, 1);
-	if (arg->width && arg->left_adj)
-		pf_padding(arg, ' ', 1);
+	i = -1;
+	while (++i < arg->width)
+		s[i] = arg->zero_pad ? '0' : ' ';
+	s[0] = arg->left_adj ? c : s[0];
+	if (!arg->left_adj)
+		s[arg->width > 0 ? arg->width - 1 : 0] = c;
+	write(1, s, arg->width > 0 ? arg->width : 1);
 	return (arg->width > 0 ? arg->width : 1);
 }
