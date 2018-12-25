@@ -16,8 +16,9 @@ size_t	ft_putnstr(char *s, size_t n)
 {
 	size_t len;
 
-	if (!(len = ft_strlen(s)))
-		return (0);
-	write(1, s, n < len ? n : len);
-	return (n < len ? n : len);
+	while (s[len] && len < n)
+		len++;
+	if (len)
+		write(1, s, len);
+	return (len);
 }
