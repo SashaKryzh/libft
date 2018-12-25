@@ -17,11 +17,9 @@ int		pf_display_s(t_pf_arg *arg, va_list ap)
 	int		ret;
 	int		to_print;
 	char	*s;
-	char	*null;
 
-	null = "(null)";
 	if (!(s = (char *)va_arg(ap, const char *)))
-		s = null;
+		s = "(null)";
 	ret = ft_strlen(s);
 	ret = arg->precision < ret && arg->precision != -1 ? arg->precision : ret;
 	to_print = ret;
