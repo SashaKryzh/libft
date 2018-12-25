@@ -12,19 +12,23 @@
 
 #include "libft.h"
 
-int		ft_putnbr_base(intmax_t n, char *base_chars)
+int		ft_putnbr_base(intmax_t n, int base)
 {
-	int base;
-	int ret;
+	int		i;
+	int		ret;
+	char	s[(ret = ft_nbrlen(n, base) + (n < 0 && base == 10))];
 
-	ret = 0;
-	base = ft_strlen(base_chars);
-	if (n < 0 && base == 10)
-		ft_putchar('-');
-	ret += n < 0 && base == 10 ? 1 : 0;
-	if (n > base - 1 || n < -base + 1)
-		ret += ft_putnbr_base(ft_abs(n / base), base_chars);
-	ft_putchar(base_chars[ft_abs(n % base)]);
-	ret += 1;
+	s[0] = n == 0 ? '0' : s[0];
+	s[0] = n < 0 && base == 10 ? '-' : s[0];
+	i = ret - 1;
+	while (n != 0)
+	{
+		if (ABS(n % base) > 9)
+			s[i--] = ABS(n % base) - 10 + 'A';
+		else
+			s[i--] = ABS(n % base) + '0';
+		n /= base;
+	}
+	write(1, s, ret);
 	return (ret);
 }
