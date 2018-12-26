@@ -18,8 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	res = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	if (res == NULL)
+	if (!(res = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
 		return (NULL);
 	ft_strcpy(res, s1);
 	ft_strcat(res, s2);
