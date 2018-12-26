@@ -30,7 +30,7 @@ typedef struct	s_pf_arg
 	int		nlen;
 	enum	e_pf_length
 	{
-		no_lenght,
+		no_lenght = 0,
 		hh,
 		h,
 		l,
