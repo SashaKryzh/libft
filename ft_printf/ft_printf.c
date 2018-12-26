@@ -65,23 +65,25 @@ static int	assemble_arg(char **format, va_list ap)
 
 static int	print(char *format, va_list ap)
 {
-	int ret;
+	int		ret;
+	char	*tmp;
 
 	ret = 0;
+	tmp = format;
 	while (*format)
 	{
 		if (*format == '%')
 		{
+			write(1, tmp, (size_t)(format - tmp));
 			format++;
 			ret += assemble_arg(&format, ap);
+			tmp = format;
+			continue ;
 		}
-		else
-		{
-			write(1, format, 1);
-			format++;
-			ret++;
-		}
+		format++;
+		ret++;
 	}
+	write(1, tmp, (size_t)(format - tmp));
 	return (ret);
 }
 
