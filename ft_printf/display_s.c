@@ -14,19 +14,17 @@
 
 int		pf_display_s(t_pf_arg *arg, va_list ap)
 {
-	int		ret;
-	int		to_print;
+	int		len;
 	char	*s;
 
 	if (!(s = (char *)va_arg(ap, const char *)))
 		s = "(null)";
-	ret = ft_strlen(s);
-	ret = arg->precision < ret && arg->precision != -1 ? arg->precision : ret;
-	to_print = ret;
-	if (arg->width > ret && !arg->left_adj)
-		ret += pf_padding(arg, arg->pad, ret);
-	ft_putnstr(s, to_print);
-	if (arg->width > ret && arg->left_adj)
-		ret += pf_padding(arg, ' ', to_print);
-	return (ret);
+	len = ft_strlen(s);
+	len = arg->precision < len && arg->precision != -1 ? arg->precision : len;
+	if (arg->width > len && !arg->left_adj)
+		pf_padding(arg, arg->pad, len);
+	ft_putnstr(s, len);
+	if (arg->width > len && arg->left_adj)
+		pf_padding(arg, ' ', len);
+	return (arg->width > len ? arg->width : len);
 }

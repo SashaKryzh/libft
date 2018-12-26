@@ -38,6 +38,12 @@ int			pf_padding(t_pf_arg *arg, char pad, int ret)
 	char	s[arg->width - ret];
 	int		i;
 
+	if (arg->width - ret <= 0)
+	{
+		if (arg->pref)
+			write(1, &arg->pref, 1);
+		return (arg->pref ? 1 : 0);
+	}
 	i = 0;
 	if (arg->pref)
 		s[i++] = arg->pref;
