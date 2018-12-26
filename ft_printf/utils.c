@@ -53,6 +53,17 @@ int			pf_padding(t_pf_arg *arg, char pad, int ret)
 	return (i);
 }
 
+int			pf_padding_2(t_pf_arg *arg, char *s, char padding, int diff)
+{
+	int		ret;
+
+	ret = 0;
+	s[ret + arg->pref ? 1 : 0] = arg->pref;
+	while (ret < diff)
+		s[ret++] = padding;
+	return (ret);
+}
+
 void		pf_to_lowercase(char *s)
 {
 	int i;

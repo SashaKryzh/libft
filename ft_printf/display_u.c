@@ -30,22 +30,19 @@ int		u_nbrlen(uintmax_t nbr, int base)
 char	*pf_u_itoa_base(uintmax_t nbr, int base)
 {
 	int		len;
-	int		sign;
 	char	*s;
 
-	sign = 0;
 	len = u_nbrlen(nbr, base);
-	if (!(s = ft_strnew(len + sign)))
+	if (!(s = ft_strnew(len)))
 		return (NULL);
 	len--;
 	while (len + 1)
 	{
 		if (nbr % base > 9)
-			s[len] = ft_abs(nbr % base) - 10 + 'A';
+			s[len--] = nbr % base - 10 + 'A';
 		else
-			s[len] = ft_abs(nbr % base) + '0';
+			s[len--] = nbr % base + '0';
 		nbr /= base;
-		len--;
 	}
 	return (s);
 }

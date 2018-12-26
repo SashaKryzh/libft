@@ -82,4 +82,11 @@ char			*pf_dtoa(long double n, int after);
 
 char			*pf_unsigned_precision(char *s, int prec);
 
+/*
+** In development
+*/
+
+int				pf_padding_2(t_pf_arg *arg, char *s, char padding, int diff);
+int				pf_display_o_2(t_pf_arg *arg, va_list ap);
+
 #endif
