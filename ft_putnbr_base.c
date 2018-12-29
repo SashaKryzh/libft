@@ -16,8 +16,9 @@ int		ft_putnbr_base(intmax_t n, int base)
 {
 	int		i;
 	int		ret;
-	char	s[(ret = ft_nbrlen(n, base) + (n < 0 && base == 10))];
+	char	s[ft_nbrlen(n, base) + (n < 0 && base == 10)];
 
+	ret = ft_nbrlen(n, base) + (n < 0 && base == 10);
 	s[0] = n == 0 ? '0' : s[0];
 	s[0] = n < 0 && base == 10 ? '-' : s[0];
 	i = ret - 1;
