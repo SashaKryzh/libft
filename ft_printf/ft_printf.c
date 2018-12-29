@@ -14,15 +14,8 @@
 
 static void	initialize(t_pf_arg *arg)
 {
-	arg->alter = 0;
-	arg->zero_pad = 0;
-	arg->left_adj = 0;
-	arg->sign = 0;
-	arg->blank = 0;
-	arg->pref = '\0';
-	arg->width = 0;
+	ft_bzero(arg, sizeof(t_pf_arg));
 	arg->precision = -1;
-	arg->pf_length = no_lenght;
 }
 
 static int	print_pf_arg(t_pf_arg *arg, char spec, va_list ap)
@@ -72,23 +65,25 @@ static int	assemble_arg(char **format, va_list ap)
 
 static int	print(char *format, va_list ap)
 {
-	int ret;
+	int		ret;
+	char	*tmp;
 
 	ret = 0;
+	tmp = format;
 	while (*format)
 	{
 		if (*format == '%')
 		{
+			write(1, tmp, (size_t)(format - tmp));
 			format++;
 			ret += assemble_arg(&format, ap);
+			tmp = format;
+			continue ;
 		}
-		else
-		{
-			write(1, format, 1);
-			format++;
-			ret++;
-		}
+		format++;
+		ret++;
 	}
+	write(1, tmp, (size_t)(format - tmp));
 	return (ret);
 }
 
