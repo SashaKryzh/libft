@@ -35,7 +35,7 @@ char		*pf_unsigned_precision(char *s, int prec)
 
 int			pf_padding(t_pf_arg *arg, char pad, int ret)
 {
-	char	s[arg->width - ret];
+	char	s[arg->width - ret > 0 ? arg->width - ret : 1];
 	int		i;
 
 	if (arg->width - ret <= 0)
