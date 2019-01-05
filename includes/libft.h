@@ -23,6 +23,8 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 
+typedef enum { false, true } t_bool;
+
 # define MALCH(x) if (!x) exit (1);
 # define ABS(x) ((x) < 0 ? -(x) : (x))
 
