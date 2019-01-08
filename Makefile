@@ -26,6 +26,7 @@ ft_memchr.c \
 ft_memcmp.c \
 ft_memalloc.c \
 ft_memdel.c \
+ft_memrev.c \
 ft_strlen.c \
 ft_strdup.c \
 ft_strndup.c \
