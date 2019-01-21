@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_memrev(void	*s, size_t len)
+void	ft_memrev(void *s, size_t len)
 {
 	size_t	i;
 	char	*tmpmem;
