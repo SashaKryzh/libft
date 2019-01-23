@@ -46,6 +46,8 @@ static size_t	ft_words(char *s, char c)
 			isword = 1;
 		i++;
 	}
+	if (!count)
+		return (-2);
 	return (count);
 }
 
