@@ -38,6 +38,7 @@ static int		ft_return_line(int ret, char **st_buff, int fd, char **line)
 		st_buff[fd] = ft_update_str(2, st_buff[fd], NULL, len);
 		if (st_buff[fd][0] == '\0')
 			ft_strdel(&st_buff[fd]);
+		return (2);
 	}
 	else
 	{
